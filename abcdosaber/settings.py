@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tipodeatividade.apps.TipodeatividadeConfig',
+    'aluno.apps.AlunoConfig',
+    'instrutor.apps.InstrutorConfig',
+    'titulo.apps.TituloConfig',
+    'utilitarios.apps.UtilitariosConfig',
 ]
 
 MIDDLEWARE = [
@@ -106,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'pt_br'
+LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Sao_Paulo'
 
