@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from tipodeatividade.models import TipoDeAtividade
 
 # Create your views here.
-def index(request):
-    return HttpResponse("Este é index de Tipo de Atividade novamente.")
+def listar(request):
+    lista_tipodeatividade = TipoDeAtividade.objects.all()
+    contexto = {
+        'tiposdeatividade': lista_tipodeatividade
+    }
+    return render(request, 'tipodeatividade/listarTiposAtividade.html', context=contexto)
 
-def index2(request):
-    return render(request, "index.html")
