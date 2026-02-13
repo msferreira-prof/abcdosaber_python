@@ -22,14 +22,14 @@
 
     <div class="row">
         <div class="col text-center m-0">
-            <h2 class="mt-2 mb-5 my-h2">Lista de Tipos de Atividade</h2>
+            <h2 class="mt-2 mb-5 my-h2">Lista de Títulos</h2>
         </div>
     </div>
 
     <!-- tabela responsiva -->
     <div class="table-responsive">
 
-        {% if tiposdeatividade %}
+        {% if titulos %}
             <!-- classes para tabela (Bootstrap) , tabela sem borda, conteudo alinhado ao centro, ... , width: auto -->
             <table class="table
                         table-borderless
@@ -52,11 +52,11 @@
                 </thead>
 
                 <!-- linhas -->
-                {% for ta in tiposdeatividade %}
+                {% for ti in titulo %}
 
                     <tr>
-                        <td class="text-center"> {{ ta.codigo }} </td>
-                        <td class="text-"> {{ ta.descricao }} </td>
+                        <td class="text-center"> {{ titulo.codigo }} </td>
+                        <td> {{ titulo.descricao }} </td>
                     </tr> 
                 
                 {% endfor %}

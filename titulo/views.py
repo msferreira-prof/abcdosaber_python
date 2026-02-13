@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from titulo.models import Titulo
 
 # Create your views here.
 def listar(request):
