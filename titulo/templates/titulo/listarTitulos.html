@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse justify-content-end" id="mynavbar">
         <div class="navbar-nav">
             <a href="/" class="nav-link">Início</a>
-            <a href="cadastroTitulos.html" class="nav-link">Cadastrar</a>
+            <a href="{% url 'titulo:cadastro' %}" class="nav-link">Cadastrar</a>
             <a href="{% url 'titulo:listar' %}" class="nav-link">Listar</a>
         </div>
     </div>
@@ -52,7 +52,7 @@
                 </thead>
 
                 <!-- linhas -->
-                {% for ti in titulo %}
+                {% for titulo in titulos %}
 
                     <tr>
                         <td class="text-center"> {{ titulo.codigo }} </td>
