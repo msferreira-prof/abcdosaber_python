@@ -3,10 +3,10 @@ from urllib import request
 from django.shortcuts import render
 from instrutor.forms import InstrutorForm
 from instrutor.models import Instrutor
-import tipodeatividade
+from titulo.models import Titulo
 
 # Create your views here.
-## listar os tipos de atividade cadastrados
+## listar os instrutores cadastrados
 def listar(request):
     lista_instrutor = Instrutor.objects.all()
     contexto = {
@@ -16,7 +16,12 @@ def listar(request):
 
 ## carregar a pagina de cadastro de instrutor
 def carregar_cadastro(request):
-    return render(request, 'instrutor/cadastroInstrutor.html')
+    lista_titulos = Titulo.objects.all()
+    contexto = {
+        'titulos': lista_titulos,
+    }
+
+    return render(request, 'instrutor/cadastroInstrutor.html', context=contexto)
 
 ## cadastrar um instrutor
 def cadastrar(request):
@@ -33,5 +38,13 @@ def cadastrar(request):
         )
         
         instrutor.save()
-        
-    return render(request, 'instrutor/cadastroInstrutor.html')
+    
+        return render(request, 'instrutor/cadastroInstrutor.html')
+    
+    else:
+        erros = form.errors
+        contexto = {
+            'erros': erros,
+        }
+
+        return render(request, 'instrutor/pagina_erro.html', context=contexto)

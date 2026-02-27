@@ -26,10 +26,7 @@ urlpatterns = [
     path('tipodeatividade/', include('tipodeatividade.urls')),
     path('titulo/', include('titulo.urls')),
     path('instrutor/', include('instrutor.urls')),    
-    
-    #path('aluno/', include('aluno.urls')),
-
-    #path('titulo/', include('titulo.urls')),
-    #path('utilitarios/', include('utilitarios.urls')),
+    path('aluno/', include('aluno.urls')),
+#    path('utilitarios/', include('utilitarios.urls')),
 ]
 
