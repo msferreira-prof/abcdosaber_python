@@ -1,6 +1,6 @@
 # Create your views here.
 from urllib import request
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from instrutor.forms import InstrutorForm
 from instrutor.models import Instrutor
 from titulo.models import Titulo
@@ -48,3 +48,13 @@ def cadastrar(request):
         }
 
         return render(request, 'instrutor/pagina_erro.html', context=contexto)
+
+## excluir um instrutor
+def excluir(request, id):
+    try:
+        instrutor = Instrutor.objects.get(pk=id)
+        instrutor.delete()
+    except Instrutor.DoesNotExist:
+        pass
+    
+    return redirect('instrutor:listar')

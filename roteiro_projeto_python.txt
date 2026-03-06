@@ -1,0 +1,39 @@
+1) CRIAR O PROJETO
+django-admin startproject NOME_PROJETO .
+
+2) RODAR O SERVIDOR
+python manage.py runserver
+
+3) CRIAR O APP
+python manage.py startapp core
+
+4) REGISTRAR APP NO PROJETO
+- abra o arquivo NOME_PROJETO/settings.py
+- procure INSTALLED_APPS e adicione 'core' na lista
+
+5) CRIAR PRIMEIRO MODEL
+- abra o arquivo core/models.py
+- crie o seu modelo lá
+
+6) FAÇA A MIGRATION (CRIANDO O BANCO)
+python manage.py makemigrations
+python manage.py migrate
+
+7) CRIE O ADMIN (SUPERUSUÁRIO)
+python manage.py createsuperuser
+
+8) REGISTRE O MODEL NO ADMIN
+- abre o core/admin.py
+
+mete um:
+
+from django.contrib import admin
+from .models import NOME_DO_MODEL_QUE_TU_CRIOU
+
+admin.site.register(NOME_DO_MODEL_QUE_TU_CRIOU)
+
+9) ACESSA O ADMIN
+python manage.py runserver
+acessa no browser 127.0.0.1:8000/admin
+
+Se aparecer o painel admin, funfou

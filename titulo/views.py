@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from titulo.models import Titulo
 from titulo.forms import TituloForm
 
@@ -26,3 +26,13 @@ def cadastrar(request):
         titulo.save()
         
     return render(request, 'titulo/cadastroTitulo.html')
+
+## excluir um tipo de atividade
+def excluir(request, codigo):
+    try:
+        titulo = Titulo.objects.get(pk=codigo)
+        titulo.delete()
+    except Titulo.DoesNotExist:
+        pass
+    
+    return redirect('titulo:listar')
