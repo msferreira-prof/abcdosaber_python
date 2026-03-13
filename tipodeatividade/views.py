@@ -1,7 +1,8 @@
 from urllib import request
 from django.shortcuts import redirect, render
+import tipodeatividade
 from tipodeatividade.models import TipoDeAtividade
-from tipodeatividade.forms import TipoDeAtividadeForm
+from tipodeatividade.forms import TipoDeAtividadeForm, TipoDeAtividadeAtualizarForm
 
 # Create your views here.
 ## listar os tipos de atividade cadastrados
@@ -43,4 +44,26 @@ def excluir(request, codigo):
     # onde o usuário deve ser redirecionado para a página de listagem de registros após a exclusão do registro. 
     # Já a função render é mais adequada para ser utilizada em casos de cadastro e atualização de registros,
     # onde o usuário deve permanecer na mesma página após a realização da ação. 
+    return redirect('tipodeatividade:listar')
+
+def carregar_tipodeatividade(request, codigo):
+    # recuperar o tipo de atividade a ser editado
+    tipodeatividade = TipoDeAtividade.objects.get(pk=codigo)
+    contexto = {
+        'tipodeatividade': tipodeatividade,
+    }
+
+    return render(request, 'tipodeatividade/atualizarTipoDeAtividade.html', context=contexto)
+
+def atualizar(request):
+    if request.method == 'POST':
+        form = TipoDeAtividadeAtualizarForm(request.POST)
+        if form.is_valid():
+            dados_tipodeatividade = form.cleaned_data
+
+            codigo = dados_tipodeatividade['codigo']
+            tipodeatividade = TipoDeAtividade.objects.get(pk=codigo)
+            tipodeatividade.descricao = dados_tipodeatividade['descricao']
+            tipodeatividade.save()
+    
     return redirect('tipodeatividade:listar')
